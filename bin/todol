@@ -1,0 +1,21 @@
+#! /usr/bin/env lua
+
+local todol = require('lua.todol')
+
+cmd = arg[1]
+
+function print_list(list)
+    for i,v in ipairs(list) do
+        print("[".. i .. "] " .. v)
+    end
+end
+
+
+
+local commands = {
+    add = function() todol.add(arg[2]) end,
+    list = function() print_list(todol.list()) end,
+    rm = function() todol.rm(arg[2]) end,
+}
+
+commands[cmd]()
